@@ -62,8 +62,8 @@ class ProsthesisCompanyFrequency(models.Model):
     zimmer_biomet = models.IntegerField(verbose_name="Zimmer Biomet")
     exacthech = models.IntegerField(verbose_name="Exacthech")
     lima = models.IntegerField()
-    fx_solution = models.IntegerField()
-    enovis_DJO = models.IntegerField()
+    fx_solution = models.IntegerField(default=0)
+    enovis_DJO = models.IntegerField(default=0)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -100,8 +100,8 @@ class RevisionRatesOfProsthesisCompany(models.Model):
     zimmer_biomet = models.IntegerField(verbose_name="Zimmer Biomet")
     exacthech = models.IntegerField(verbose_name="Exacthech")
     lima = models.IntegerField()
-    fx_solution = models.IntegerField()
-    enovis_DJO = models.IntegerField()
+    fx_solution = models.IntegerField(default=0)
+    enovis_DJO = models.IntegerField(default=0)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
