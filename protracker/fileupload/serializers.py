@@ -55,7 +55,7 @@ class PCFSerializer(serializers.ModelSerializer):
         model = ProsthesisCompanyFrequency
         fields = (
             'id', 'age_group_id', 'arthrex', 'depuy_synthes', 'smith_nephew', 'stryker', 'zimmer_biomet', 'exacthech',
-            'lima', 'uploaded_at')
+            'lima', 'fx_solution', 'enovis_DJO', 'uploaded_at')
 
 
 # ----------------- NEW SERIALIZERS --------------------
