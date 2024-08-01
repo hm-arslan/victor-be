@@ -938,6 +938,8 @@ def create_prosthesis_company_frequency_by_age_entry(request):
                         'zimmer_biomet': row[5],
                         'exacthech': row[6],
                         'lima': row[7],
+                        'fx_solution': row[8],
+                        'enovis_DJO': row[9],
                     })
 
             saved_data = []
@@ -951,6 +953,8 @@ def create_prosthesis_company_frequency_by_age_entry(request):
                 zimmer_biomet = parse_int(row['zimmer_biomet'])
                 exacthech = parse_int(row['exacthech'])
                 lima = parse_int(row['lima'])
+                fx_solution = parse_int(row['fx_solution'])
+                enovis_DJO = parse_int(row['enovis_DJO'])
 
                 print(row)
 
@@ -967,6 +971,8 @@ def create_prosthesis_company_frequency_by_age_entry(request):
                         'zimmer_biomet': zimmer_biomet,
                         'exacthech': exacthech,
                         'lima': lima,
+                        'fx_solution': fx_solution,
+                        'enovis_DJO': enovis_DJO,
                     }
 
                     print(data)
@@ -1094,6 +1100,8 @@ def create_revision_rates_of_prosthesis_company_entry(request):
                         'zimmer_biomet': row[5],
                         'exacthech': row[6],
                         'lima': row[7],
+                        'fx_solution': row[8],
+                        'enovis_DJO': row[9],
                     })
 
             saved_data = []
@@ -1107,6 +1115,8 @@ def create_revision_rates_of_prosthesis_company_entry(request):
                 zimmer_biomet = parse_int(row['zimmer_biomet'])
                 exacthech = parse_int(row['exacthech'])
                 lima = parse_int(row['lima'])
+                fx_solution = parse_int(row['fx_solution'])
+                enovis_DJO = parse_int(row['enovis_DJO'])
 
                 try:
                     indication_instance, created = Indication.objects.get_or_create(indication=indication_value)
@@ -1120,6 +1130,8 @@ def create_revision_rates_of_prosthesis_company_entry(request):
                         'zimmer_biomet': zimmer_biomet,
                         'exacthech': exacthech,
                         'lima': lima,
+                        'fx_solution': fx_solution,
+                        'enovis_DJO': enovis_DJO,
                     }
 
                     data_serializer = RevisionRatesOfProsthesisCompanySerializer(data=data)
@@ -1139,62 +1151,4 @@ def create_revision_rates_of_prosthesis_company_entry(request):
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
     return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# class FileUploadView(APIView):
-#     authentication_classes = [SessionAuthentication, TokenAuthentication]
-#     permission_classes = [IsAuthenticated]
-
-#     parser_classes = (MultiPartParser, FormParser)
-
-#     def post(self, request, *args, **kwargs):
-
-#         file_serializer = FileUploadSerializer(data=request.data)
-
-#         if file_serializer.is_valid():
-
-#             file = file_serializer.validated_data['file_path']
-#             print(file)
-
-#             uploaded_file = file_serializer.save(user=request.user)
-#             file_id = uploaded_file.id
-
-#             csv_data = []
-#             with open(uploaded_file.file_path.path, mode='r', encoding='utf-8-sig') as csv_file:
-#                 file_content = csv_file.read().replace('\ufeff', '')
-#                 csv_reader = csv.reader(file_content.splitlines())
-
-#                 for row in csv_reader:
-#                     if row[0] != 'Sex' and row[1] != 'Age' and row[2] != 'Indications' and row[3] != 'Prothesis Type':
-#                         csv_data.append({
-#                             'sex': row[0],
-#                             'age': row[1],
-#                             'indications': row[2],
-#                             'prothesis_type': row[3],
-#                         })
-#             saved_data = []
-#             errors = []
-#             for row in csv_data:
-#                 # print(row)
-#                 # print(type(row))
-#                 data_serializer = DataUploadSerializer(data=row)
-
-#                 if data_serializer.is_valid():
-#                     try:
-#                         file_instance = FileUpload.objects.get(id=file_id)
-#                         instance = data_serializer.save(file=file_instance)
-#                         saved_data.append(data_serializer.data)
-#                     except Exception as e:
-#                         errors.append(str(e))
-#                 else:
-#                     errors.append(data_serializer.errors)
-#             if errors:
-#                 return Response({'errors': errors}, status=status.HTTP_400_BAD_REQUEST)
-#             else:
-#                 return Response({
-#                     'file_data': saved_data,
-#                     'file_details': file_serializer.data
-#                 }, status=status.HTTP_201_CREATED)
-#         else:
-#             return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
