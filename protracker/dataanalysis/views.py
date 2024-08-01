@@ -512,7 +512,9 @@ def get_revision_rates_of_prosthesis_company_by_indication(request):
         total_stryker=Sum(Cast('stryker', IntegerField())),
         total_zimmer_biomet=Sum(Cast('zimmer_biomet', IntegerField())),
         total_exacthech=Sum(Cast('exacthech', IntegerField())),
-        total_lima=Sum(Cast('lima', IntegerField()))
+        total_lima=Sum(Cast('lima', IntegerField())),
+        total_fx_solution=Sum(Cast('fx_solution', IntegerField())),
+        total_enovis_djo=Sum(Cast('enovis_djo', IntegerField()))
     )
 
     # Convert the aggregated data to a list of dictionaries
