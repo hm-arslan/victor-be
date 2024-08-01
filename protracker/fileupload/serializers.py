@@ -73,7 +73,7 @@ class RevisionRatesOfProsthesisCompanySerializer(serializers.ModelSerializer):
         model = RevisionRatesOfProsthesisCompany
         fields = (
             'id', 'indication_id', 'arthrex', 'depuy_synthes', 'smith_nephew', 'stryker', 'zimmer_biomet', 'exacthech',
-            'lima', 'uploaded_at')
+            'lima', 'fx_solution', 'enovis_DJO', 'uploaded_at')
 
 
 class HemiarthroplastyByIndicationSerializer(serializers.ModelSerializer):
